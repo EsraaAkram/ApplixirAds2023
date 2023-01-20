@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/ApplixirExample.iml" filepath="$PROJECT_DIR$/.idea/ApplixirExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ApplixirExample.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.iml" filepath="$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.main.iml" filepath="$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/applixir/ApplixirExample.applixir.unitTest.iml" />
+    </modules>
+  </component>
+</project>
