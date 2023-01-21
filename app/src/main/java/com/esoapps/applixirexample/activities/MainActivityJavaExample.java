@@ -16,10 +16,8 @@ import com.esoapps.applixirexample.applixirAds.WebViewApplixirKotlin;
 public class MainActivityJavaExample extends AppCompatActivity {
 
     private Button rewardBtn;
-
     private RelativeLayout webviewContainerRv;
     private WebViewApplixirKotlin webViewApplixirKotlin;
-
     private String url = "https://js.appcdn.net/Android-test-1.html";
 
     @Override
