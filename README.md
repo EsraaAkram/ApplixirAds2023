@@ -71,9 +71,11 @@ a-create kotlin file WebViewApplixirKotlin
 copy and paste this custom webview class to it:
 
 
+
 import android.content.Context
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
+
 
 class WebViewApplixirKotlin(context: Context, private val webUrl: String) :
 WebView(context) {
