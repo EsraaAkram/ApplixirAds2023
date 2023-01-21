@@ -14,8 +14,10 @@ import com.esoapps.applixirexample.applixirAds.showApplixirAd
 class MainActivityKotlinExample : AppCompatActivity() {
 
     private var rewardBtn: Button? = null
+
     private var webviewContainerRv: RelativeLayout? = null
     private var webViewApplixirKotlin: WebViewApplixirKotlin? = null
+
     private val url = "https://js.appcdn.net/Android-test-1.html"
 
     override fun onCreate(savedInstanceState: Bundle?) {
