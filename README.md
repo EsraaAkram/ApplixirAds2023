@@ -40,9 +40,11 @@ First option (add Applixir SDK) :
 a-Add the dependency to your gradle:
 implementation 'com.github.esraaakram:ApplixirAdsExample2023:1.1.2'
 b- make sure that you added jitpack.io to gradle settings:
+
 dependencyResolutionManagement {
 repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 repositories {
+
 google()
 mavenCentral()
 maven { url 'https://jitpack.io' }//this
@@ -69,9 +71,11 @@ a-create kotlin file WebViewApplixirKotlin
 copy and paste this custom webview class to it:
 
 
+
 import android.content.Context
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
+
 
 class WebViewApplixirKotlin(context: Context, private val webUrl: String) :
 WebView(context) {
