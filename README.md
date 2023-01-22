@@ -36,168 +36,19 @@ You have 2 options:
 
 
 
-First option (add Applixir SDK) :
+FIRST OPTION (add Applixir SDK) :
 a-Add the dependency to your gradle:
 implementation 'com.github.esraaakram:ApplixirAdsExample2023:1.1.2'
 b- make sure that you added jitpack.io to gradle settings:
-
-dependencyResolutionManagement {
-repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-repositories {
-
-google()
-mavenCentral()
-maven { url 'https://jitpack.io' }//this
-
-    }
-}
+maven { url 'https://jitpack.io' }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Second option(add Applixir Files Manually) :
-a-create kotlin file WebViewApplixirKotlin
-copy and paste this custom webview class to it:
-
-
-
-import android.content.Context
-import android.webkit.JavascriptInterface
-import android.webkit.WebView
-
-
-class WebViewApplixirKotlin(context: Context, private val webUrl: String) :
-WebView(context) {
-
-    fun showAds(onCompleteAdListener: OnCompleteAdListener) {
-        this.loadUrl(webUrl)
-        addJavascriptInterface(object : Applixir(context) {
-            @JavascriptInterface
-            override fun adStatusCallback(status: String?) {
-                super.adStatusCallback(status)
-
-                onCompleteAdListener.statusCallBack(status)
-            }
-        }, "Android")
-    }
-
-    interface OnCompleteAdListener {
-        fun statusCallBack(status: String?)
-    }
-
-    open inner class Applixir(var mContext: Context) {
-        @JavascriptInterface
-        open fun adStatusCallback(status: String?) {
-        }
-    }
-
-    init {
-        val webSettings = this.settings
-        webSettings.javaScriptEnabled = true
-        //TODO:UN COMMENT THE COUPLE LINES OF CODE IF YOU ARE USING BLOGGER AS A HOST FOR ADS:
-//        val newUA = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/20100101 Firefox/4.0"
-//        webSettings.userAgentString = newUA
-//        this.webViewClient = WebViewClient()
-
-    }
-
-
-}
-
-
-
-a-create kotlin file SimplerApplixirHelper
-copy and paste this custom SimplerApplixirHelper methods to it:
-
-
-import android.app.Activity
-import android.os.Handler
-import android.os.Looper
-import android.view.View
-import android.view.ViewGroup
-fun loadApplixirAd(
-webviewContainerRv: ViewGroup?,
-act: Activity,
-url: String
-): WebViewApplixirKotlin {
-
-    var params = ViewGroup.LayoutParams(
-        ViewGroup.LayoutParams.MATCH_PARENT,
-        ViewGroup.LayoutParams.MATCH_PARENT,
-    )
-    var webViewApplixirKotlin = WebViewApplixirKotlin(
-        act,
-        url
-    )
-
-    webViewApplixirKotlin.loadUrl(url)
-    webviewContainerRv!!.addView(webViewApplixirKotlin, params)
-    webViewApplixirKotlin.visibility = View.INVISIBLE
-    return webViewApplixirKotlin
-}
-
-fun showApplixirAd(
-webviewContainerRv: ViewGroup?,
-webViewApplixirKotlin: WebViewApplixirKotlin?,
-
-    ) {
-
-
-    hideAndShowWebView(webviewContainerRv)
-
-    webViewApplixirKotlin?.showAds(object : WebViewApplixirKotlin.OnCompleteAdListener {
-        override fun statusCallBack(status: String?) {
-
-            if (status == "sys-closing") { //AD CLOSED
-
-                Handler(Looper.getMainLooper()).post {
-                    hideAndShowOriginal(webviewContainerRv)
-                }
-            }
-        }
-    })
-
-
-}
-
-
-fun hideAndShowWebView(webviewContainerRv: ViewGroup?) {
-for (i in 0 until webviewContainerRv?.childCount!!) {
-val child: View = webviewContainerRv.getChildAt(i)
-if (child is WebViewApplixirKotlin) {
-
-            webviewContainerRv.getChildAt(i).visibility = View.VISIBLE
-
-        } else {
-            webviewContainerRv.getChildAt(i).visibility = View.INVISIBLE
-        }
-    }
-
-}
-
-fun hideAndShowOriginal(webviewContainerRv: ViewGroup?) {
-for (i in 0 until webviewContainerRv?.childCount!!) {
-val child: View = webviewContainerRv.getChildAt(i)
-if (child is WebViewApplixirKotlin) {
-
-            webviewContainerRv.getChildAt(i).visibility = View.INVISIBLE
-        } else {
-            webviewContainerRv.getChildAt(i).visibility = View.VISIBLE
-        }
-    }
-
-}
+SECOND OPTION (add Applixir Files Manually) :
+create kotlin files WebViewApplixirKotlin and SimplerApplixirHelper
+copy and paste this classes to it:
+WebViewApplixirKotlin and SimplerApplixirHelper
 
 
 
@@ -222,104 +73,25 @@ android:usesCleartextTraffic="true"
 2-on the xml make sure to use RelativeLayout or ConstraintLayout
 As parent view for all in the layout and give it id will will use it to add the add
 
-Example:
-
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/webviewContainerRv"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".activities.MainActivityKotlinExample">
-
-    <Button
-        android:id="@+id/rewardBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Reward AD!"
-        android:textAllCaps="false" />
-
-
-</RelativeLayout>
 
 
 
 
+3-In your actvity:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-3-In your actvity make sure you create
-Java:
-private Button rewardBtn;
-private RelativeLayout webviewContainerRv;
-private WebViewApplixirKotlin webViewApplixirKotlin;
-private String url = "https://js.appcdn.net/Android-test-1.html";//add yours
-
-kotlin:
-private var rewardBtn: Button? = null
-private var webviewContainerRv: RelativeLayout? = null
-private var webViewApplixirKotlin: WebViewApplixirKotlin? = null
-private val url = "https://js.appcdn.net/Android-test-1.html"
-
-
-the first one is just the button that will trigger onclick
-second is the parent layout in the xmlm in my case it is relative layout, make sure to use relative or constraint layout
-the third variable is the webview that will show ads
-
-and add your ads website in the forth variable
-
-4-define my ui (I used findviewbyid you can use binding no problem)
-Java:
-rewardBtn = findViewById(R.id.rewardBtn);
-webviewContainerRv = findViewById(R.id.webviewContainerRv);
-
-kotlin:
-rewardBtn = findViewById(R.id.rewardBtn)
-webviewContainerRv = findViewById(R.id.webviewContainerRv)
-
-
-
-
-
-5-loading the ads:
+-Loading the ads:
 Make sure too load ads early after findviewbyid that will make your ad appear faster
 Java:
-webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url);
+webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url);//webviewContainerRv is the parent layout in xml
 
 kotlin
 webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url)
 
 
-6-show ads:
-Now I will show the add on user click on reward button:
-Java:
-rewardBtn.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View v) {
-
-        showApplixirAd(webviewContainerRv, webViewApplixirKotlin);
-    }
-});
-
-kotlin:
-rewardBtn!!.setOnClickListener {
-showApplixirAd(webviewContainerRv, webViewApplixirKotlin)
-}
-
-
+-show ads:
+showApplixirAd(webviewContainerRv, webViewApplixirKotlin);
 
 
 the full source code in github:
