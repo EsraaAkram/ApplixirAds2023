@@ -83,14 +83,16 @@ As parent view for all in the layout and give it id will will use it to add the 
 
 -Loading the ads:
 Make sure too load ads early after findviewbyid that will make your ad appear faster
-Java:
-webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url);//webviewContainerRv is the parent layout in xml
 
-kotlin
-webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url)
+
+webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url) //webviewContainerRv is the parent layout in xml
+
+
+
 
 
 -show ads:
+
 showApplixirAd(webviewContainerRv, webViewApplixirKotlin);
 
 
