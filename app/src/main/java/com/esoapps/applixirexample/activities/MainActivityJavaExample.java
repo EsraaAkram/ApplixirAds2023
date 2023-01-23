@@ -1,7 +1,7 @@
 package com.esoapps.applixirexample.activities;
 
-import static com.esoapps.applixirexample.applixirAds.SimplerApplixirHelperKt.loadApplixirAd;
-import static com.esoapps.applixirexample.applixirAds.SimplerApplixirHelperKt.showApplixirAd;
+//import static com.esoapps.applixirexample.applixirAds.SimplerApplixirHelperKt.loadApplixirAd;
+//import static com.esoapps.applixirexample.applixirAds.SimplerApplixirHelperKt.showApplixirAd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,15 +27,15 @@ public class MainActivityJavaExample extends AppCompatActivity {
 
         itemsDefinitions();
 
-        webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url);
-
-        rewardBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                showApplixirAd(webviewContainerRv, webViewApplixirKotlin);
-            }
-        });
+//        webViewApplixirKotlin = loadApplixirAd(webviewContainerRv, this, url);
+//
+//        rewardBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                showApplixirAd(webviewContainerRv, webViewApplixirKotlin);
+//            }
+//        });
 
     }
 
