@@ -15,6 +15,7 @@
         android:theme="@style/Theme.ApplixirExample"
         android:usesCleartextTraffic="true"
 
+
         >
 
 

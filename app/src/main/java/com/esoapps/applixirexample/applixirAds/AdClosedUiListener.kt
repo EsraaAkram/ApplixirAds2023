@@ -4,7 +4,7 @@ import android.view.ViewGroup
 
 interface AdClosedUiListener {
     fun statusCallBack(
-        webviewContainerRv: ViewGroup?,
+        webViewContainerRv: ViewGroup?,
         webViewApplixirKotlin: WebViewApplixirKotlin?,
         status: String?,
     )

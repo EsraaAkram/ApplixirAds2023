@@ -42,8 +42,6 @@ class MainActivityKotlinExample : AppCompatActivity() {
 
         rewardBtn!!.setOnClickListener {
 
-            //showApplixirAd(webviewContainerRv, webViewApplixirKotlin)
-
             simplerApplixirAds?.showApplixirAd(
                 webviewContainerRv,
                 webViewApplixirKotlin
