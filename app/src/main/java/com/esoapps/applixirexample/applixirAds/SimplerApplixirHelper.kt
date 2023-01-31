@@ -9,7 +9,7 @@ import android.view.ViewGroup
 
 
 fun loadApplixirAd(
-    webviewContainerRv: ViewGroup?,
+    webViewContainerRv: ViewGroup?,
     act: Activity,
     url: String
 ): WebViewApplixirKotlin {
@@ -24,7 +24,7 @@ fun loadApplixirAd(
     )
 
     webViewApplixirKotlin.loadUrl(url)
-    webviewContainerRv!!.addView(webViewApplixirKotlin, params)
+    webViewContainerRv!!.addView(webViewApplixirKotlin, params)
     webViewApplixirKotlin.visibility = View.INVISIBLE
 
 
@@ -58,15 +58,15 @@ fun showApplixirAd(
 }
 
 
-fun hideAndShowWebView(webviewContainerRv: ViewGroup?) {
-    for (i in 0 until webviewContainerRv?.childCount!!) {
-        val child: View = webviewContainerRv.getChildAt(i)
+fun hideAndShowWebView(webViewContainerRv: ViewGroup?) {
+    for (i in 0 until webViewContainerRv?.childCount!!) {
+        val child: View = webViewContainerRv.getChildAt(i)
         if (child is WebViewApplixirKotlin) {
 
-            webviewContainerRv.getChildAt(i).visibility = View.VISIBLE
+            webViewContainerRv.getChildAt(i).visibility = View.VISIBLE
 
         } else {
-            webviewContainerRv.getChildAt(i).visibility = View.INVISIBLE
+            webViewContainerRv.getChildAt(i).visibility = View.INVISIBLE
         }
     }
 

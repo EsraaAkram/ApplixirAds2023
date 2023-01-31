@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.esoapps.applixirexample.R
 import com.esoapps.applixirexample.applixirAds.SimplerApplixirAds
 import com.esoapps.applixirexample.applixirAds.WebViewApplixirKotlin
-import com.esoapps.applixirexample.applixirAds.loadApplixirAd
-import com.esoapps.applixirexample.applixirAds.showApplixirAd
 
 
 class MainActivityKotlinExample : AppCompatActivity() {
@@ -31,8 +29,6 @@ class MainActivityKotlinExample : AppCompatActivity() {
 
         itemsDefinitions()
 
-
-        //loadApplixirAd(webviewContainerRv, this, url)
 
         simplerApplixirAds = SimplerApplixirAds()
 

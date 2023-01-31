@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 
 class SimplerApplixirAds : AdClosedUiListener {
-    var showingAdsCounter = 0
-
 
     fun loadApplixirAd(
-        webviewContainerRv: ViewGroup?,
+        webViewContainerRv: ViewGroup?,
         act: Activity,
         url: String
     ): WebViewApplixirKotlin {
@@ -25,27 +23,21 @@ class SimplerApplixirAds : AdClosedUiListener {
             url
         )
 
-        //webViewApplixirKotlin.loadUrl(url)
-        fastLoadApplixirAd(
-            webviewContainerRv = webviewContainerRv,
-            webViewApplixirKotlin = webViewApplixirKotlin,
-            addClosedUiListener = this,
+        //OLD:fastLoadApplixirAd
+        webViewApplixirKotlin.loadUrl("")
 
-            )
-        webviewContainerRv!!.addView(webViewApplixirKotlin, params)
+        webViewContainerRv?.addView(webViewApplixirKotlin, params)
         webViewApplixirKotlin.visibility = View.INVISIBLE
         return webViewApplixirKotlin
     }
 
-    fun fastLoadApplixirAd(
-        webviewContainerRv: ViewGroup?,
+    private fun fastLoadApplixirAd(
+        webViewContainerRv: ViewGroup?,
         webViewApplixirKotlin: WebViewApplixirKotlin?,
         addClosedUiListener: AdClosedUiListener,
 
         ) {
 
-
-        //hideAndShowWebView(webviewContainerRv)
 
         webViewApplixirKotlin?.showAds(object : WebViewApplixirKotlin.OnCompleteAdListener {
             override fun statusCallBack(status: String?) {
@@ -54,7 +46,7 @@ class SimplerApplixirAds : AdClosedUiListener {
 
 
                     addClosedUiListener.statusCallBack(
-                        webviewContainerRv = webviewContainerRv,
+                        webViewContainerRv = webViewContainerRv,
                         webViewApplixirKotlin = webViewApplixirKotlin,
 
                         status = status,
@@ -68,35 +60,33 @@ class SimplerApplixirAds : AdClosedUiListener {
     }
 
     fun showApplixirAd(
-        webviewContainerRv: ViewGroup?,
+        webViewContainerRv: ViewGroup?,
         webViewApplixirKotlin: WebViewApplixirKotlin?,
     ) {
-        showingAdsCounter += 1
-        if (showingAdsCounter > 1) {//RE-PRESS SO LOAD ANOTHER AD
-            fastLoadApplixirAd(
-                webviewContainerRv = webviewContainerRv,
-                webViewApplixirKotlin = webViewApplixirKotlin,
-                addClosedUiListener = this,
-            )
-        }
 
-        hideAndShowWebView(webviewContainerRv)
+        fastLoadApplixirAd(
+            webViewContainerRv = webViewContainerRv,
+            webViewApplixirKotlin = webViewApplixirKotlin,
+            addClosedUiListener = this,
+        )
+
+        hideAndShowWebView(webViewContainerRv)
     }
 
 
     override fun statusCallBack(
-        webviewContainerRv: ViewGroup?,
+        webViewContainerRv: ViewGroup?,
         webViewApplixirKotlin: WebViewApplixirKotlin?,
         status: String?,
     ) {
 
         Handler(Looper.getMainLooper()).post {
-            hideAndShowOriginal(webviewContainerRv)
+            hideAndShowOriginal(webViewContainerRv)
         }
     }
 
     fun closeAd(
-        webviewContainerRv: ViewGroup?,
+        webViewContainerRv: ViewGroup?,
         webViewApplixirKotlin: WebViewApplixirKotlin?,
     ): Boolean {
         var adIsOpen = false
@@ -105,7 +95,7 @@ class SimplerApplixirAds : AdClosedUiListener {
             webViewApplixirKotlin.loadUrl("")
 
             Handler(Looper.getMainLooper()).post {
-                hideAndShowOriginal(webviewContainerRv)
+                hideAndShowOriginal(webViewContainerRv)
             }
 
             adIsOpen = true
