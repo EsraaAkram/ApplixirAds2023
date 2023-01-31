@@ -6,7 +6,6 @@ import android.webkit.WebView
 
 class WebViewApplixirKotlin(context: Context, private val webUrl: String) :
     WebView(context) {
-
     fun showAds(onCompleteAdListener: OnCompleteAdListener) {
         this.loadUrl(webUrl)
         addJavascriptInterface(object : Applixir(context) {
@@ -36,8 +35,6 @@ class WebViewApplixirKotlin(context: Context, private val webUrl: String) :
 //        val newUA = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/20100101 Firefox/4.0"
 //        webSettings.userAgentString = newUA
 //        this.webViewClient = WebViewClient()
-
     }
-
 
 }

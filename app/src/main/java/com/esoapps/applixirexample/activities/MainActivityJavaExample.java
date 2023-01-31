@@ -37,7 +37,6 @@ public class MainActivityJavaExample extends AppCompatActivity {
         rewardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 simplerApplixirAds.showApplixirAd(
                         webviewContainerRv,
                         webViewApplixirKotlin

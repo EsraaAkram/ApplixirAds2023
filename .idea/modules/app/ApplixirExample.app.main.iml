@@ -24,6 +24,7 @@
           <stringArguments>
             <stringArg name="classpath">
               <args>
+                <arg>$MODULE_DIR$/../../../app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/dee9de666c13bd33c682dd1ceb3c2114/transformed/material-1.8.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/383057ea50661cba0cd974c79e6742a3/transformed/appcompat-1.6.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/ba2d1cb997a63c4f07e092c424c1f6dd/transformed/viewpager2-1.0.0-api.jar</arg>

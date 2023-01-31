@@ -20,7 +20,7 @@
 
 
         <activity
-            android:name=".activities.MainActivityJavaExample"
+            android:name=".activities.MainActivityKotlinExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
